@@ -1,0 +1,88 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Family {
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  id: ID!
+  name: String!
+  members: [User!]!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type User {
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  id: ID!
+  name: String!
+  phoneNumber: String!
+  family: Family!
+  dietaryRestrictions: [String!]!
+}
+
+type Recipe {
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  id: ID!
+  name: String!
+  instructions: [String!]!
+  ingredients: [String!]!
+  preparationTime: Int!
+  imageUrl: String!
+  tags: [String!]!
+  family: Family!
+}
+
+type Order {
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  id: ID!
+  recipe: Recipe!
+  family: Family!
+  chefs: [User!]!
+  mealType: MealType!
+  orderStatus: OrderStatus!
+  voters: [User!]!
+  voteCount: Int!
+  hasViewerVoted: Boolean!
+  chefCount: Int!
+  isViewerCooking: Boolean!
+}
+
+enum MealType {
+  breakfast
+  lunch
+  dinner
+}
+
+enum OrderStatus {
+  voting
+  cooking
+  completed
+}
+
+type Query {
+  recipes: [Recipe!]!
+  orders(afterDate: DateTime, beforeDate: DateTime): [Order!]!
+}
+
+type Mutation {
+  joinFamily(user: CreateUserInput!, familyId: String!): Family!
+  createFamily(user: CreateUserInput!, name: String!): Family!
+  createRecipeFromUrl(url: String!): Recipe!
+  createRecipeFromAi(name: String!): Recipe!
+  createOrder(recipeId: String!, isVoting: Boolean = false, isCooking: Boolean = false, mealType: MealType): Order!
+  voteForOrder(orderId: String!): Order!
+  cookForOrder(orderId: String!): Order!
+}
+
+input CreateUserInput {
+  name: String!
+  phoneNumber: String!
+  dietaryRestrictions: [String!] = []
+}

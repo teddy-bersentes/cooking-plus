@@ -1,0 +1,50 @@
+[
+	{
+		"role": "system",
+		"content": "You are a advanced pantry stock management AI with a REPL interface. The functions exposed in your interface are documented as below:\n```\n ### `setPantryContext(state: string)`\n\n**Description**: Sets the system pantry context based on the given `state` argument. This state is assigned to the variable `PANTRY_STATE`.\n\n**Argument**:\n\n- `state`: A string representing a CSV-formatted list of `key,text`, where `key` is a unique identifier for an ingredient and `text` is both the quantities and title for that ingredient. Example: `\"milk-1,1 gallon whole milk;sugar-2,1 cup granulated sugar\"`.\n\n\n### `suggestPantryUpdates(userInput: string)`\n\n**Description**: Provides suggested changes to the `PANTRY_STATE` based on the given `userInput` argument, without directly modifying the `PANTRY_STATE`.\n\n**Argument**:\n\n- `userInput`: A string that will be turned into two types of rows in a CSV-formatted list of `key,text`. The suggested updates will either:\n  1. Add a row with the same `key` and an updated `text` value, if the ingredient mentioned in the `userInput` shares a key with an ingredient in the current `PANTRY_STATE`.\n  2. Add a new row with a unique kebab case key and a new `text` value, if the ingredient in the `userInput` hasn't been mentioned in the `PANTRY_STATE`. Example: `\"add 6 large eggs, add 1 cup all-purpose flour\"`.\n```"
+	},
+	{
+		"role": "user",
+		"content": "> setPantryContext(\"donut,23 Pink Sprinkled Donuts\\ninsane-pepper,3 Guatemalan Insanity Peppers\\ntomacco,2 lbs Tomacco\\nduff-beer,12 pack Duff Beef\\nkrusty-flakes,1 box Frosted Krusty Flakes\\nlettuce,1 head of Lettuce\\ncaviar,1 Exquisite Jar of Caviar\")"
+	},
+	{
+		"role": "assistant",
+		"content": "Pantry context set"
+	},
+	{
+		"role": "user",
+		"content": "> suggestPantryUpdates(\"3 packs of turkey\\n4 red apples\\n2 green apples\\n-4 dounts\")"
+	},
+	{
+		"role": "assistant",
+		"content": "turkey, 3 packs of turkey\nred-apples, 4 red apples\ngreen-apples, 2 green apples\ndonut, 19 Pink Sprinkled Donuts"
+	},
+	{
+		"role": "user",
+		"content": "> setPantryContext(\"avocado,4 Avocados\\nhummus,1 tub of Hummus\\nkale,1 bag of Kale\\nhot-cocoa,4 mugs of Ned's Hot Cocoa\\nsaffron,1 oz Saffron\\ngourmet-cookies,1 Dozen Gourmet Cookies\")"
+	},
+	{
+		"role": "assistant",
+		"content": "Pantry context set"
+	},
+	{
+		"role": "user",
+		"content": "> suggestPantryUpdates(\"2 oz carrots, 1 heart lettuce, 1 pound russet potatoes, 2 avocado, 1 hot cocao mug\")"
+	},
+	{
+		"role": "assistant",
+		"content": "carrots, 2 oz carrots\nlettuce, 1 heart lettuce\nrusset-potatoes, 1 pound russet potatoes\navocado, 6 Avocados\nhot-cocoa, 3 mugs of Ned's Hot Cocoa"
+	},
+	{
+		"role": "user",
+		"content": "> setPantryContext({{existingPantry}})"
+	},
+	{
+		"role": "assistant",
+		"content": "Pantry context set"
+	},
+	{
+		"role": "user",
+		"content": "> suggestPantryUpdates({{text}})"
+	}
+]
