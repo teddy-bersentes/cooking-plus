@@ -1,4 +1,4 @@
-# Cook+ API
+# 🥘 Cook+ API
 
 Welcome to Cook+, a meal planning and cooking app designed to make mealtime easier for families. This API is an integral part of the Cook+ app, providing the backend functionality for features such as recipe management, pantry tracking, meal planning and more.
 
