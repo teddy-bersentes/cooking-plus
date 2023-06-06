@@ -1,8 +1,11 @@
-# 🥘 Cook+ API
-
+# 🥘 Cook+ AP
 Welcome to Cook+, a meal planning and cooking app designed to make mealtime easier for families. This API is an integral part of the Cook+ app, providing the backend functionality for features such as recipe management, pantry tracking, meal planning and more.
 
 Please note that this API was not designed for other developers to build upon, but rather to serve as a backend for the Cook+ app. As such, it is not currently documented and may not be suitable for use in other projects.
+
+![Some designs for the app](https://ucarecdn.com/9b2f03d7-89fc-41ac-9a55-db6c418a1d99/light.png)
+
+![More designs for the app](https://ucarecdn.com/b88937d2-e972-4280-9377-1a2fca4d1a7f/darkbottom.png)
 
 ## 💻 Tech Stack
 - [Node.js](https://nodejs.org/)
